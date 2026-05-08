@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="darkzil">darkzil</h1>
+<p><strong>darkzil</strong> is a small ZIL/Z-machine project template
+for creating <strong>Z3 text adventure games</strong>, with special care
+for running on <strong>Atari 8-bit computers</strong>.</p>
+<p>It is intended for compact, old-school interactive fiction: dungeon
+crawls, sword-and-sorcery adventures, parser experiments, and
+Infocom-style games that should remain compatible with constrained 8-bit
+targets.</p>
+<h2 id="purpose">Purpose</h2>
+<p>The goal of this project is to provide a simple, understandable base
+for writing Z-machine Version 3 games in ZIL.</p>
+<p>The code is kept deliberately small and conservative so that games
+can run not only in modern interpreters such as Frotz, but also on
+classic Atari 8-bit computers.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><p>Z-machine Version 3 / Z3 target</p></li>
+<li><p>Atari 8-bit friendly design</p></li>
+<li><p>Small custom parser</p></li>
+<li><p>Compact standard-library style support file</p></li>
+<li><p>Room, object, inventory, and movement handling</p></li>
+<li><p>Basic verbs such as:</p>
+<ul>
+<li><code>LOOK</code></li>
+<li><code>EXAMINE</code></li>
+<li><code>SEARCH</code></li>
+<li><code>TAKE/GET</code></li>
+<li><code>DROP</code></li>
+<li><code>OPEN</code></li>
+<li><code>CLOSE</code></li>
+<li><code>USE</code></li>
+<li><code>TALK</code></li>
+<li><code>GIVE</code></li>
+<li><code>KILL</code></li>
+<li><code>SAVE</code></li>
+<li><code>RESTORE</code></li>
+<li><code>RESTART</code></li>
+<li><code>QUIT</code></li>
+</ul></li>
+<li><p>Confirmation prompts for dangerous actions</p></li>
+<li><p>Support for old-style adventure mechanics:</p>
+<ul>
+<li>locked doors</li>
+<li>light sources</li>
+<li>traps</li>
+<li>puzzle objects</li>
+<li>room descriptions</li>
+<li>inventory state</li>
+</ul></li>
+<li><p>Conversation System</p></li>
+<li><p>Novel RPG elements based on DarkRPG system:</p>
+<ul>
+<li>attributes</li>
+<li>combat</li>
+<li>automatic or manual dice rolls</li>
+</ul></li>
+</ul>
+<h2 id="darkrpg">DarkRPG</h2>
+<p><strong>DarkRPG</strong> is a general-purpose tabletop role-playing
+game system created by Andy Kosela. It is designed as a simple, flexible
+rules framework for running old-school fantasy, sword-and-sorcery,
+dungeon-crawling, or science-fiction adventure campaigns. Rather than
+being tied to a single setting, <strong>DarkRPG</strong> provides a
+compact foundation for characters, conflict, exploration, and
+game-master adjudication, allowing it to be adapted to different worlds,
+tones, and styles of play.</p>
+<p>The system draws on many years of experience with some of the most
+influential role-playing games in the history of the hobby, including
+<strong>Basic D&amp;D</strong>, <strong>AD&amp;D</strong>,
+<strong>Traveller</strong>, <strong>GURPS</strong>, <strong>Warhammer
+Fantasy Roleplay</strong>, <strong>RuneQuest</strong>, <strong>Cyberpunk
+2020</strong>, <strong>Fighting Fantasy</strong>,
+<strong>QuestGame</strong>, and <strong>MERP</strong>. It aims to
+preserve the clarity, danger, imagination, and freedom of classic RPG
+design while keeping the rules compact and practical for actual
+play.</p>
+<p>Both <strong>DarkZIL</strong> and <strong>DarkRPG</strong> projects
+are interconnected with Andy Kosela’s <strong>DarkSim</strong>, a 3D
+simulation engine based on Looking Glass Studios’ Dark Engine powering
+Thief: The Dark Project and System Shock 2 games.</p>
+<h2 id="attributes">Attributes</h2>
+<p>The game uses a small RPG attribute system called
+<strong>DarkRPG</strong>.</p>
+<p>To display your current attributes, type:</p>
+<pre class="text"><code>A</code></pre>
+<p>The game prints:</p>
+<pre class="text"><code>S:&lt;value&gt;, D:&lt;value&gt;, W:&lt;value&gt;, HP:&lt;value&gt;, AP:&lt;value&gt;</code></pre>
+<p>The attributes are:</p>
+<pre class="text"><code>S  Strength
+D  Dexterity
+W  Weapon skill
+HP Health points
+AP Armor points</code></pre>
+<h3 id="strength-s">Strength / S</h3>
+<p>Strength shows how physically strong the player is.</p>
+<p>It affects starting health:</p>
+<pre class="text"><code>HP = 6 + S</code></pre>
+<p>A weak character has fewer hit points.</p>
+<p>A strong character has more hit points.</p>
+<h3 id="dexterity-d">Dexterity / D</h3>
+<p>Dexterity shows how quick and agile the player is.</p>
+<p>It is displayed as part of the character sheet and may be used by the
+game for agility-style checks.</p>
+<h3 id="weapon-skill-w">Weapon Skill / W</h3>
+<p>Weapon skill shows how well the player fights with weapons.</p>
+<p>It is added to the player’s combat roll:</p>
+<pre class="text"><code>player attack = 1d6 + W</code></pre>
+<p>Higher Weapon skill makes the player more likely to win in
+combat.</p>
+<h3 id="health-points-hp">Health Points / HP</h3>
+<p>Health points show how much injury the player can survive.</p>
+<p>If HP falls to zero, the player dies.</p>
+<p>When killed, the game prints a game-over message and asks whether to
+restart.</p>
+<h3 id="armor-points-ap">Armor Points / AP</h3>
+<p>Armor points reduce incoming damage.</p>
+<p>Armor items increase AP.</p>
+<p>Examples:</p>
+<pre class="text"><code>dented iron helmet      AP +1
+shirt of dark chainmail AP +2</code></pre>
+<p>Incoming damage is reduced like this:</p>
+<pre class="text"><code>final damage = raw damage - AP</code></pre>
+<p>Damage cannot go below zero.</p>
+<p>If armor reduces damage to zero, the blow is stopped.</p>
+<p>To see the in-game RPG help, type:</p>
+<pre class="text"><code>RPG</code></pre>
+<hr />
+<h2 id="starting-attribute-rolls">Starting Attribute Rolls</h2>
+<p>Starting attributes are rolled at the beginning of the game.</p>
+<p>Each attribute is rolled with <strong>2d6</strong>.</p>
+<p>The 2d6 result is converted into an attribute modifier:</p>
+<pre class="text"><code>2-4    = -1
+5-8    =  0
+9-10   = +1
+11-12  = +2</code></pre>
+<p>The game rolls:</p>
+<pre class="text"><code>Strength/S
+Dexterity/D
+Weapon/W</code></pre>
+<p>Then HP is calculated:</p>
+<pre class="text"><code>HP = 6 + S</code></pre>
+<p>Example:</p>
+<pre class="text"><code>S:1, D:0, W:2, HP:7, AP:0</code></pre>
+<p>This means:</p>
+<pre class="text"><code>S  +1  strong
+D   0  average
+W  +2  expert
+HP  7
+AP  0</code></pre>
+<hr />
+<h2 id="combat">Combat</h2>
+<p>Combat is simple and round-based.</p>
+<p>Use:</p>
+<pre class="text"><code>KILL &lt;npc&gt;</code></pre>
+<p>or the short form:</p>
+<pre class="text"><code>K &lt;npc&gt;</code></pre>
+<p>Examples:</p>
+<pre class="text"><code>KILL GUARD
+K GUARD</code></pre>
+<p>If there is only one obvious enemy in the room, you can usually
+type:</p>
+<pre class="text"><code>KILL</code></pre>
+<p>or:</p>
+<pre class="text"><code>K</code></pre>
+<p>and the game will choose that target automatically.</p>
+<p>You cannot fight properly while chained. Free yourself first.</p>
+<h3 id="guard-combat">Guard Combat</h3>
+<p>When fighting the guard, one combat round happens each time you
+attack.</p>
+<p>The combat round compares:</p>
+<pre class="text"><code>player roll = 1d6 + W
+guard roll  = 1d6 + guard W</code></pre>
+<p>The game prints both results.</p>
+<p>Example:</p>
+<pre class="text"><code>You roll 5; the guard rolls 3.</code></pre>
+<p>If the player rolls higher, the player hits the guard.</p>
+<p>If the guard rolls higher, the guard hits the player.</p>
+<p>If both rolls are equal, neither side gains the advantage.</p>
+<h3 id="player-damage">Player Damage</h3>
+<p>If the player has a sword, player damage is:</p>
+<pre class="text"><code>1d6</code></pre>
+<p>The old sword and the guard’s sword both do normal sword damage.</p>
+<p>If the player fights without a sword, damage is much weaker.</p>
+<p>Bare-handed damage is reduced from the 1d6 roll:</p>
+<pre class="text"><code>1      = 0 damage
+2-3    = 1 damage
+4-5    = 2 damage
+6      = 3 damage</code></pre>
+<p>The guard has armor, so bare-handed attacks are usually useless
+against him.</p>
+<p>In practice, find a sword before trying to kill the guard.</p>
+<h3 id="guard-armor">Guard Armor</h3>
+<p>The guard has armor:</p>
+<pre class="text"><code>guard AP = 3</code></pre>
+<p>After the player rolls damage, the guard’s AP reduces it.</p>
+<p>Example:</p>
+<pre class="text"><code>raw damage = 5
+guard AP   = 3
+final damage = 2</code></pre>
+<p>If final damage is zero, the game prints that the guard’s helm and
+chainmail turn the blow.</p>
+<h3 id="guard-damage">Guard Damage</h3>
+<p>If the guard wins the combat roll, he rolls:</p>
+<pre class="text"><code>1d6 damage</code></pre>
+<p>Your AP reduces this damage.</p>
+<p>Example:</p>
+<pre class="text"><code>raw damage = 4
+your AP    = 2
+final damage = 2</code></pre>
+<p>If your AP reduces damage to zero, your armor turns the blow.</p>
+<h3 id="wasting-turns-near-the-guard">Wasting Turns Near the Guard</h3>
+<p>If the guard is present and threatening, wasting time is
+dangerous.</p>
+<p>Commands that are not movement and not an attack against the guard
+may allow him to strike you.</p>
+<p>The guard’s punishment strike does:</p>
+<pre class="text"><code>2 damage</code></pre>
+<p>So if the guard is in the room, do not waste turns unless you are
+ready to take a hit.</p>
+<hr />
+<h2 id="automatic-and-manual-dice-rolls">Automatic and Manual Dice
+Rolls</h2>
+<p>The game supports both automatic and manual dice rolls.</p>
+<p>By default, dice rolls are <strong>automatic</strong>.</p>
+<p>In automatic mode, the game rolls internally.</p>
+<p>To toggle dice mode, type:</p>
+<pre class="text"><code>DICE</code></pre>
+<p>When manual dice mode is turned on, the game prints:</p>
+<pre class="text"><code>Manual dice rolls are now on. Roll real dice and type the result when asked.
+For manual starting attributes, type RESTART now.</code></pre>
+<p>When manual dice mode is turned off, the game prints:</p>
+<pre class="text"><code>Automatic dice rolls are now on.</code></pre>
+<h3 id="manual-1d6-rolls">Manual 1d6 Rolls</h3>
+<p>For a 1d6 roll, roll one real six-sided die and type the result.</p>
+<p>Example prompt:</p>
+<pre class="text"><code>Roll 1d6 for your attack:</code></pre>
+<p>Valid input:</p>
+<pre class="text"><code>1
+2
+3
+4
+5
+6</code></pre>
+<h3 id="manual-2d6-rolls">Manual 2d6 Rolls</h3>
+<p>For a 2d6 roll, roll two real six-sided dice and type the total.</p>
+<p>Example prompt:</p>
+<pre class="text"><code>Roll 2d6 for Strength/S (2-12):</code></pre>
+<p>Valid input:</p>
+<pre class="text"><code>2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</code></pre>
+<p>If the number is outside the valid range, the game asks again.</p>
+<h3 id="manual-starting-attributes">Manual Starting Attributes</h3>
+<p>Starting attributes are rolled when the game starts.</p>
+<p>If you want to roll starting attributes manually, do this:</p>
+<pre class="text"><code>DICE
+RESTART</code></pre>
+<p>After restart, the game asks you to manually enter the 2d6 totals
+for:</p>
+<pre class="text"><code>Strength/S
+Dexterity/D
+Weapon/W</code></pre>
+<h3 id="dice-used-in-combat">Dice Used in Combat</h3>
+<p>Combat uses dice rolls for attack and damage.</p>
+<p>Player attack:</p>
+<pre class="text"><code>1d6 + W</code></pre>
+<p>Guard attack:</p>
+<pre class="text"><code>1d6 + guard W</code></pre>
+<p>Player sword damage:</p>
+<pre class="text"><code>1d6</code></pre>
+<p>Guard damage:</p>
+<pre class="text"><code>1d6</code></pre>
+<p>In automatic mode, the game rolls these internally.</p>
+<p>In manual mode, you roll real dice and type the result.</p>
+<h2 id="conversation-system">Conversation System</h2>
+<p>The game includes a menu-based conversation system for NPCs.</p>
+<p>To start a conversation, type:</p>
+<pre class="text"><code>TALK TO &lt;npc&gt;</code></pre>
+<p>When a conversation begins, the game displays a list of dialogue
+choices marked with letters:</p>
+<pre class="text"><code>The old man lifts his head. His beard is white with dust and his eyes gleam in the gloom.
+
+Ask the old man about:
+  A. Himself
+  B. The guard
+  C. The deep places
+  D. End conversation</code></pre>
+<p>The final option always ends the conversation and returns to normal
+command mode.</p>
+<p>While in conversation mode, normal movement and object commands are
+not used. Choose one of the displayed letter options to continue or end
+the conversation.</p>
+<h2 id="carrying-items">Carrying Items</h2>
+<p>The game uses a simple carrying limit.</p>
+<p>At the start, you can carry only <strong>2 items</strong>,
+representing what you can hold in your hands.</p>
+<p>An <strong>old backpack</strong> can be found in the <strong>Old
+Armory</strong>.</p>
+<p>Once you take the backpack, your carrying limit increases to
+<strong>10 items total</strong>:</p>
+<pre class="text"><code>2 items in your hands
+8 more items in the backpack</code></pre>
+<p>The inventory command does not print item counts. It only lists what
+you are carrying.</p>
+<p>Use:</p>
+<pre class="text"><code>INVENTORY</code></pre>
+<p>or:</p>
+<pre class="text"><code>I</code></pre>
+<p>To take everything visible in the current room:</p>
+<pre class="text"><code>TAKE ALL
+GET ALL
+G ALL</code></pre>
+<p>To drop everything you are carrying:</p>
+<pre class="text"><code>DROP ALL</code></pre>
+<p><code>DROP ALL</code> drops the backpack last, so it works even when
+you are carrying more than two items.</p>
+<p>If you are carrying more than two items, you cannot drop the backpack
+by itself. You must drop enough items first.</p>
+<h2 id="engine-console-system-monitor">Engine Console / System
+Monitor</h2>
+<p>The game includes a small hidden engine console. It behaves like a
+minimal system monitor/debugger rather than an in-world magic
+system.</p>
+<p>Enter it from normal gameplay with either:</p>
+<pre class="text"><code>CONSOLE</code></pre>
+<p>or:</p>
+<pre class="text"><code>CON</code></pre>
+<p>The game then asks for a password:</p>
+<pre class="text"><code>PASSWORD:</code></pre>
+<p>The password is:</p>
+<pre class="text"><code>zork</code></pre>
+<p>Successful login prints:</p>
+<pre class="text"><code>220 SYS MONITOR READY. Q=RTS.</code></pre>
+<p>The normal game prompt <code>&gt;</code> changes to the console
+prompt <code>*</code>.</p>
+<p>Exit the console with:</p>
+<pre class="text"><code>Q</code></pre>
+<p>or:</p>
+<pre class="text"><code>QUIT</code></pre>
+<p>The console exits with:</p>
+<pre class="text"><code>221 RTS.</code></pre>
+<p>Console commands do not advance normal game turns.</p>
+<h2 id="console-opcodes">Console Opcodes</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Opcode</th>
+<th>Arguments</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HLP</code></td>
+<td>none</td>
+<td>Print console help.</td>
+</tr>
+<tr>
+<td><code>WHE</code></td>
+<td>none</td>
+<td>Print current room, turn count, HP/AP, attributes, lamp state, and
+guard state.</td>
+</tr>
+<tr>
+<td><code>FLG</code></td>
+<td>none</td>
+<td>Dump important game flags.</td>
+</tr>
+<tr>
+<td><code>ROM</code></td>
+<td>none</td>
+<td>Print the room symbol table: available room addresses for
+<code>GOT</code>.</td>
+</tr>
+<tr>
+<td><code>GOT</code></td>
+<td>room address</td>
+<td>Teleport to a room.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td>object file</td>
+<td>Force an object into inventory.</td>
+</tr>
+<tr>
+<td><code>DRP</code></td>
+<td>object file</td>
+<td>Drop an object into the current room.</td>
+</tr>
+<tr>
+<td><code>HEA</code></td>
+<td>none</td>
+<td>Restore HP to derived maximum: <code>6 + S</code>.</td>
+</tr>
+<tr>
+<td><code>HUR</code></td>
+<td>none</td>
+<td>Subtract 1 HP.</td>
+</tr>
+<tr>
+<td><code>KIL</code></td>
+<td>none</td>
+<td>Kill/disable the guard.</td>
+</tr>
+<tr>
+<td><code>OPN</code></td>
+<td>none</td>
+<td>Force-open or patch the relevant local barrier.</td>
+</tr>
+<tr>
+<td><code>FRE</code></td>
+<td>none</td>
+<td>Clear the starting chain flag.</td>
+</tr>
+<tr>
+<td><code>DRN</code></td>
+<td>none</td>
+<td>Reveal the lever and mark the well as drained.</td>
+</tr>
+<tr>
+<td><code>LIT</code></td>
+<td>none</td>
+<td>Put lamp in inventory and mark it lit.</td>
+</tr>
+<tr>
+<td><code>DUS</code></td>
+<td>none</td>
+<td>Mark lamp dark/unlit.</td>
+</tr>
+<tr>
+<td><code>REV</code></td>
+<td>none</td>
+<td>Reveal or mark local hidden content/trap state.</td>
+</tr>
+<tr>
+<td><code>Q</code></td>
+<td>none</td>
+<td>Exit console, like <code>RTS</code>.</td>
+</tr>
+<tr>
+<td><code>QUIT</code></td>
+<td>none</td>
+<td>Exit console, like <code>RTS</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="room-address-arguments">Room Address Arguments</h2>
+<p>Use these with <code>GOT</code>:</p>
+<pre class="text"><code>CEL HAL ARM COR GRD ALC NIC CRT VLT STA SPR BRG BON WEL SHR</code></pre>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CEL</code></td>
+<td>Starting cell</td>
+</tr>
+<tr>
+<td><code>HAL</code></td>
+<td>Dungeon hall</td>
+</tr>
+<tr>
+<td><code>ARM</code></td>
+<td>Old armory</td>
+</tr>
+<tr>
+<td><code>COR</code></td>
+<td>East corridor</td>
+</tr>
+<tr>
+<td><code>GRD</code></td>
+<td>Guard room</td>
+</tr>
+<tr>
+<td><code>ALC</code></td>
+<td>Dark alcove</td>
+</tr>
+<tr>
+<td><code>NIC</code></td>
+<td>Hidden niche</td>
+</tr>
+<tr>
+<td><code>CRT</code></td>
+<td>Ruined court</td>
+</tr>
+<tr>
+<td><code>VLT</code></td>
+<td>Vault</td>
+</tr>
+<tr>
+<td><code>STA</code></td>
+<td>Stair</td>
+</tr>
+<tr>
+<td><code>SPR</code></td>
+<td>Spear room</td>
+</tr>
+<tr>
+<td><code>BRG</code></td>
+<td>Bridge</td>
+</tr>
+<tr>
+<td><code>BON</code></td>
+<td>Bone room</td>
+</tr>
+<tr>
+<td><code>WEL</code></td>
+<td>Black well</td>
+</tr>
+<tr>
+<td><code>SHR</code></td>
+<td>Forgotten shrine</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre class="text"><code>*GOT WEL 
+250 CWD OK.</code></pre>
+<h2 id="object-file-arguments">Object File Arguments</h2>
+<p>Use these with <code>GET</code> and <code>DRP</code>:</p>
+<pre class="text"><code>BON BPK CHS FLA GEM GSW HEL KEY LMP MAL SWD</code></pre>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BON</code></td>
+<td>Bone</td>
+</tr>
+<tr>
+<td><code>BPK</code></td>
+<td>Backpack</td>
+</tr>
+<tr>
+<td><code>CHS</code></td>
+<td>Chisel</td>
+</tr>
+<tr>
+<td><code>FLA</code></td>
+<td>Flask of water</td>
+</tr>
+<tr>
+<td><code>GEM</code></td>
+<td>Gem</td>
+</tr>
+<tr>
+<td><code>GSW</code></td>
+<td>Guard sword</td>
+</tr>
+<tr>
+<td><code>HEL</code></td>
+<td>Helmet</td>
+</tr>
+<tr>
+<td><code>KEY</code></td>
+<td>Key</td>
+</tr>
+<tr>
+<td><code>LMP</code></td>
+<td>Lamp</td>
+</tr>
+<tr>
+<td><code>MAL</code></td>
+<td>Chainmail</td>
+</tr>
+<tr>
+<td><code>SWD</code></td>
+<td>Sword</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<pre class="text"><code>*GET SWD
+226 RETR OK.</code></pre>
+<pre class="text"><code>*DRP SWD
+250 STOR OK.</code></pre>
+<h2 id="example-console-session">Example Console Session</h2>
+<pre class="text"><code>&gt;CON
+PASSWORD:zork
+220 SYS MONITOR READY. Q=RTS.
+*HLP
+OPCODES:
+ HLP dir        WHE pwd/stat
+ FLG flag dump  ROM symtab
+ GOT &lt;addr&gt;     GET &lt;file&gt;
+ DRP &lt;file&gt;     HEA restore hp
+ HUR damage     KIL kill guard
+ OPN patch door FRE free chain
+ DRN drain      LIT lamp on
+ DUS lamp off   REV reveal
+ Q / QUIT       FIL symtab
+211 END
+*WHE
+257 CWD=Well of Black Waters
+213 TURNS=0 HP=8 AP=0
+213 S=2 D=1 W=1
+213 LAMP=DARK
+213 GUARD-HP=6
+*GOT SHR 
+250 CWD OK.
+*GET SWD
+226 RETR OK.
+*HEA
+250 HP RESTORED.
+*Q
+221 RTS.
+&gt;</code></pre>
+<h2 id="project-structure">Project Structure</h2>
+<pre class="text"><code>darkzil/
+├── darkpit.zil      # Main game source
+├── minilib.zil      # Minimal support library / parser / common routines
+├── a8.bin.green     # Atari 8-bit Z-machine interpreter, green-screen variant
+├── a8.bin.amber     # Atari 8-bit Z-machine interpreter, amber-screen variant
+├── zil              # Build/run helper script
+└── README.md</code></pre>
+<h2 id="installing">Installing</h2>
+<p>Copy <strong>zil</strong> and <strong>a8.bin</strong> files to your
+<strong>/usr/local/bin</strong>. Make <strong>zil</strong>
+executable.</p>
+<h2 id="building">Building</h2>
+<p>This project is intended to be built with <strong>ZILF</strong>. It
+also includes its own wrapper tool, <strong>zil</strong>, which handles
+most build and workflow tasks.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb63"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zil</span> darkpit.zil</span></code></pre></div>
+<p>This should produce a Z-machine story file, usually with a
+<code>.z3</code> extension plus Atari double density (dd) ATR disk
+image.</p>
+<p>You can download <strong>ZILF</strong> from <a
+href="https://zilf.io">https://zilf.io</a></p>
+<h2 id="target-platform">Target Platform</h2>
+<p>The main target is:</p>
+<pre class="text"><code>Z-machine Version 3
+Atari 8-bit</code></pre>
+<p>The code avoids relying on modern interpreter conveniences where
+possible.</p>
+<p>Because Atari 8-bit interpreters are much stricter and more
+memory-constrained than modern ones, the project tries to follow old
+Infocom-style limitations.</p>
+<h2 id="important-z3-atari-notes">Important Z3 / Atari Notes</h2>
+<p>When writing new content, keep these constraints in mind:</p>
+<h3 id="keep-vocabulary-short">Keep vocabulary short</h3>
+<p>Z3 vocabulary words are limited. In practice, keep parser words short
+and avoid long synonyms.</p>
+<p>Good:</p>
+<pre class="zil"><code>(SYNONYM DOOR GATE)</code></pre>
+<p>Risky:</p>
+<pre class="zil"><code>(SYNONYM MANACLES SHACKLES)</code></pre>
+<p>Long words may fail compilation or behave badly on older
+interpreters.</p>
+<h3 id="avoid-huge-object-tables">Avoid huge object tables</h3>
+<p>Z3 games have stricter memory and object limits than later Z-machine
+versions. Keep object count reasonable.</p>
+<h3 id="let-interpreters-wrap-text">Let interpreters wrap text</h3>
+<p>For portability, avoid manually breaking every line for a 40-column
+screen. Instead, write paragraph-style text and let each interpreter
+wrap naturally.</p>
+<p>Good:</p>
+<pre class="zil"><code>&lt;TELL &quot;The corridor bends beneath the earth, its stones black with damp and age.&quot; CR CR&gt;</code></pre>
+<p>Avoid hard-wrapping prose unless absolutely necessary.</p>
+<h3 id="keep-parser-logic-simple">Keep parser logic simple</h3>
+<p>This project uses a small manual parser rather than a full Infocom
+library. When adding a new command, make sure it is wired into the
+actual dispatch logic, not only added as a vocabulary synonym.</p>
+<h2 id="release-and-serial-number">Release and Serial Number</h2>
+<p>The release number can be set in the source with:</p>
+<pre class="zil"><code>&lt;CONSTANT RELEASEID 0&gt;</code></pre>
+<p>The serial number is normally generated from the build date in
+<code>YYMMDD</code> format.</p>
+<p>Example:</p>
+<pre class="text"><code>Release 0 / Serial number 260506</code></pre>
+<p>To print the release and serial number at startup, the game must
+explicitly print them in its banner routine.</p>
+<h2 id="example-game">Example Game</h2>
+<p>The included <code>darkpit.zil</code> is a small sword-and-sorcery
+dungeon adventure demo.</p>
+<p>It includes:</p>
+<ul>
+<li>an opening prison cell</li>
+<li>chains puzzle</li>
+<li>guard encounter</li>
+<li>lamp/light mechanics</li>
+<li>dungeon rooms</li>
+<li>traps</li>
+<li>final black gem puzzle</li>
+</ul>
+<p>It is meant both as a playable demo and as a reference for building
+your own Z3 adventure.</p>
+<h2 id="design-philosophy">Design Philosophy</h2>
+<p>darkzil favors:</p>
+<ul>
+<li>small code</li>
+<li>predictable behavior</li>
+<li>old interpreter compatibility</li>
+<li>readable ZIL</li>
+<li>simple adventure mechanics</li>
+<li>manual control over parser behavior</li>
+</ul>
+<p>It does not try to be a complete Inform-like library. It is closer to
+a compact framework for learning and experimenting with ZIL on real or
+emulated 8-bit machines.</p>
+<h2 id="development-tips">Development Tips</h2>
+<p>When adding new rooms:</p>
+<ol type="1">
+<li>Define the room object.</li>
+<li>Add exits.</li>
+<li>Add room description text.</li>
+<li>Add any room-specific search or trap logic.</li>
+<li>Test movement in both Frotz and an Atari emulator.</li>
+</ol>
+<p>When adding new objects:</p>
+<ol type="1">
+<li>Add a constant/object ID if needed.</li>
+<li>Add vocabulary.</li>
+<li>Add placement/state globals if the object moves.</li>
+<li>Add it to room/object printing.</li>
+<li>Add take/drop/inventory behavior if portable.</li>
+<li>Add special verb handling if it is part of a puzzle.</li>
+</ol>
+<p>When adding new verbs:</p>
+<ol type="1">
+<li>Add vocabulary words.</li>
+<li>Add parser dispatch handling.</li>
+<li>Add the action routine.</li>
+<li>Add help text.</li>
+<li>Test abbreviations manually.</li>
+</ol>
+<h2 id="compatibility-goal">Compatibility Goal</h2>
+<p>A game built with darkzil should ideally work in:</p>
+<ul>
+<li>Frotz</li>
+<li>Bocfel</li>
+<li>Parchment (<a href="https://iplayif.com/">play it online</a>)</li>
+<li>other modern Z-machine interpreters</li>
+<li>Atari 8-bit computers</li>
+</ul>
+<p>The Atari target is the strictest one, so if something works there,
+it will usually work elsewhere.</p>
+<h2 id="license">License</h2>
+<pre class="text"><code>MIT License</code></pre>
+<h2 id="status">Status</h2>
+<p>Experimental but usable.</p>
+<p>darkzil is intended as a practical base for Z3 adventure games,
+especially those meant to feel at home on classic Atari 8-bit
+systems.</p>
+</body>
+</html>

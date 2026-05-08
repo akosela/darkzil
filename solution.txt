@@ -1,0 +1,48 @@
+talk to man
+sea
+g bone
+use bone on chains
+o door
+n 
+w
+g all
+n
+sea
+use ring
+turn on lamp
+e
+d
+d
+sea
+e
+sea
+e
+sea
+g chisel
+d
+sea
+use lever
+e
+use chisel on gem
+g gem
+w
+up
+w
+w
+u
+u
+w
+s
+e
+e
+k
+k
+k
+x guard
+g all
+n
+g key
+s
+use key on door
+e
+u
