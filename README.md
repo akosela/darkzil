@@ -637,6 +637,7 @@ Console commands do not advance normal game turns.
 | `WHE` | none | Print current room, turn count, HP/AP, attributes, lamp state, and guard state. |
 | `FLG` | none | Dump important game flags. |
 | `ROM` | none | Print the room symbol table: available room addresses for `GOT`. |
+| `FIL` | none | Print the files (objects) symbol table. |
 | `GOT` | room address | Teleport to a room. |
 | `GET` | object file | Force an object into inventory. |
 | `DRP` | object file | Drop an object into the current room. |
