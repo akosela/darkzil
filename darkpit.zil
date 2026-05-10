@@ -77,6 +77,7 @@
 "RPG ATTRIBUTES"
 <GLOBAL ATTR-S 0>
 <GLOBAL ATTR-D 0>
+<GLOBAL ATTR-K 0>
 <GLOBAL ATTR-W 0>
 <GLOBAL HP 6>
 <GLOBAL AP 0>
@@ -325,12 +326,13 @@
 <ROUTINE ROLL-ATTRIBUTES ()
   <SETG ATTR-S <ROLL-ATTR "Roll 2d6 for Strength/S (2-12): ">>
   <SETG ATTR-D <ROLL-ATTR "Roll 2d6 for Dexterity/D (2-12): ">>
+  <SETG ATTR-K <ROLL-ATTR "Roll 2d6 for Knowledge/K (2-12): ">>
   <SETG ATTR-W <ROLL-ATTR "Roll 2d6 for Weapon/W (2-12): ">>
   <SETG HP <+ 6 ,ATTR-S>>
   <DO-ATTRIBUTES>>
 
 <ROUTINE DO-ATTRIBUTES ()
-  <TELL "S:" N ,ATTR-S ", D:" N ,ATTR-D ", W:" N ,ATTR-W ", HP:" N ,HP ", AP:" N ,AP CR>>
+  <TELL "S:" N ,ATTR-S ", D:" N ,ATTR-D ", K:" N ,ATTR-K ", W:" N ,ATTR-W ", HP:" N ,HP ", AP:" N ,AP CR>>
 
 <ROUTINE SAY-STRENGTH (N)
   <COND
@@ -345,6 +347,13 @@
     (<0? .N> <TELL "average">)
     (<EQUAL? .N 1> <TELL "quick">)
     (T <TELL "very quick">)>>
+
+<ROUTINE SAY-KNOWLEDGE (N)
+  <COND
+    (<EQUAL? .N -1> <TELL "ignorant">)
+    (<0? .N> <TELL "average">)
+    (<EQUAL? .N 1> <TELL "learned">)
+    (T <TELL "very learned">)>>
 
 <ROUTINE SAY-WEAPON (N)
   <COND
@@ -365,6 +374,10 @@
   <TELL "D is dexterity. It shows how quick and agile the character is." CR>
   <TELL "Your D is " N ,ATTR-D " (">
   <SAY-DEXTERITY ,ATTR-D>
+  <TELL ")." CR>
+  <TELL "K is knowledge. It shows what study, learning and practical understanding the character has." CR>
+  <TELL "Your K is " N ,ATTR-K " (">
+  <SAY-KNOWLEDGE ,ATTR-K>
   <TELL ")." CR>
   <TELL "W is weapon skill. It shows how well the character uses weapons." CR>
   <TELL "Your W is " N ,ATTR-W " (">
@@ -613,7 +626,7 @@ CR
 <ROUTINE CON-WHERE ()
   <TELL "257 CWD="><PRINTD ,ROOM><CRLF>
   <TELL "213 TURNS=" N ,TURNS " HP=" N ,HP " AP=" N ,AP CR>
-  <TELL "213 S=" N ,ATTR-S " D=" N ,ATTR-D " W=" N ,ATTR-W CR>
+  <TELL "213 S=" N ,ATTR-S " D=" N ,ATTR-D " K=" N ,ATTR-K " W=" N ,ATTR-W CR>
   <COND
     (,LAMP-LIT <TELL "213 LAMP=LIT" CR>)
     (T <TELL "213 LAMP=DARK" CR>)>

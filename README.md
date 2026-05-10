@@ -92,7 +92,7 @@ A
 The game prints:
 
 ```text
-S:<value>, D:<value>, W:<value>, HP:<value>, AP:<value>
+S:<value>, D:<value>, K:<value>, W:<value>, HP:<value>, AP:<value>
 ```
 
 The attributes are:
@@ -100,6 +100,7 @@ The attributes are:
 ```text
 S  Strength
 D  Dexterity
+K  Knowledge
 W  Weapon skill
 HP Health points
 AP Armor points
@@ -123,7 +124,16 @@ A strong character has more hit points.
 
 Dexterity shows how quick and agile the player is.
 
-It is displayed as part of the character sheet and may be used by the game for agility-style checks.
+It is displayed as part of the character sheet and may be used by the game for
+agility-style checks.
+
+### Knowledge / K
+
+Knowledge shows what study, learning, and practical understanding the player
+has.
+
+It is displayed as part of the character sheet and may be used by the game for
+knowledge-based checks.
 
 ### Weapon Skill / W
 
@@ -196,6 +206,7 @@ The game rolls:
 ```text
 Strength/S
 Dexterity/D
+Knowledge/K
 Weapon/W
 ```
 
@@ -208,7 +219,7 @@ HP = 6 + S
 Example:
 
 ```text
-S:1, D:0, W:2, HP:7, AP:0
+S:1, D:0, K:1, W:2, HP:7, AP:0
 ```
 
 This means:
@@ -216,6 +227,7 @@ This means:
 ```text
 S  +1  strong
 D   0  average
+K  +1  learned
 W  +2  expert
 HP  7
 AP  0
@@ -460,6 +472,7 @@ After restart, the game asks you to manually enter the 2d6 totals for:
 ```text
 Strength/S
 Dexterity/D
+Knowledge/K
 Weapon/W
 ```
 
@@ -741,7 +754,7 @@ OPCODES:
 *WHE
 257 CWD=Well of Black Waters
 213 TURNS=0 HP=8 AP=0
-213 S=2 D=1 W=1
+213 S=2 D=1 K=0 W=1
 213 LAMP=DARK
 213 GUARD-HP=6
 *GOT SHR 

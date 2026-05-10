@@ -323,10 +323,11 @@ Thief: The Dark Project and System Shock 2 games.</p>
 <p>To display your current attributes, type:</p>
 <pre class="text"><code>A</code></pre>
 <p>The game prints:</p>
-<pre class="text"><code>S:&lt;value&gt;, D:&lt;value&gt;, W:&lt;value&gt;, HP:&lt;value&gt;, AP:&lt;value&gt;</code></pre>
+<pre class="text"><code>S:&lt;value&gt;, D:&lt;value&gt;, K:&lt;value&gt;, W:&lt;value&gt;, HP:&lt;value&gt;, AP:&lt;value&gt;</code></pre>
 <p>The attributes are:</p>
 <pre class="text"><code>S  Strength
 D  Dexterity
+K  Knowledge
 W  Weapon skill
 HP Health points
 AP Armor points</code></pre>
@@ -340,6 +341,11 @@ AP Armor points</code></pre>
 <p>Dexterity shows how quick and agile the player is.</p>
 <p>It is displayed as part of the character sheet and may be used by the
 game for agility-style checks.</p>
+<h3 id="knowledge-k">Knowledge / K</h3>
+<p>Knowledge shows what study, learning, and practical understanding the
+player has.</p>
+<p>It is displayed as part of the character sheet and may be used by the
+game for knowledge-based checks.</p>
 <h3 id="weapon-skill-w">Weapon Skill / W</h3>
 <p>Weapon skill shows how well the player fights with weapons.</p>
 <p>It is added to the player’s combat roll:</p>
@@ -375,14 +381,16 @@ shirt of dark chainmail AP +2</code></pre>
 <p>The game rolls:</p>
 <pre class="text"><code>Strength/S
 Dexterity/D
+Knowledge/K
 Weapon/W</code></pre>
 <p>Then HP is calculated:</p>
 <pre class="text"><code>HP = 6 + S</code></pre>
 <p>Example:</p>
-<pre class="text"><code>S:1, D:0, W:2, HP:7, AP:0</code></pre>
+<pre class="text"><code>S:1, D:0, K:1, W:2, HP:7, AP:0</code></pre>
 <p>This means:</p>
 <pre class="text"><code>S  +1  strong
 D   0  average
+K  +1  learned
 W  +2  expert
 HP  7
 AP  0</code></pre>
@@ -506,6 +514,7 @@ RESTART</code></pre>
 for:</p>
 <pre class="text"><code>Strength/S
 Dexterity/D
+Knowledge/K
 Weapon/W</code></pre>
 <h3 id="dice-used-in-combat">Dice Used in Combat</h3>
 <p>Combat uses dice rolls for attack and damage.</p>
@@ -858,7 +867,7 @@ OPCODES:
 *WHE
 257 CWD=Well of Black Waters
 213 TURNS=0 HP=8 AP=0
-213 S=2 D=1 W=1
+213 S=2 D=1 K=0 W=1
 213 LAMP=DARK
 213 GUARD-HP=6
 *GOT SHR 
