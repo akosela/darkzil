@@ -1675,7 +1675,11 @@ to " N .DMG "." CR>
     (<EQUAL? .OBJ ,OBJ-KEY>
       <TELL "A rusty key is half-hidden among the stones." CR>)
     (<EQUAL? .OBJ ,OBJ-FLASK>
-      <TELL "A flask of water stands on a cracked shelf." CR>)
+      <COND
+        (<EQUAL? ,ROOM ,RM-ARMORY>
+          <TELL "A flask of water stands on a cracked shelf." CR>)
+        (T
+          <TELL "A flask of water lies here." CR>)>)
     (<EQUAL? .OBJ ,OBJ-BACKPACK>
       <TELL "An old backpack lies folded among the dust and rust." CR>)
     (<EQUAL? .OBJ ,OBJ-CORPSE>
@@ -1701,7 +1705,11 @@ to " N .DMG "." CR>
         (T
           <TELL "A black gem burns with cold star-fire on the altar." CR>)>)
     (<EQUAL? .OBJ ,OBJ-BONE>
-      <TELL "A jagged bone lies among the rotten straw." CR>)
+      <COND
+        (<EQUAL? ,ROOM ,RM-CELL>
+          <TELL "A jagged bone lies among the rotten straw." CR>)
+        (T
+          <TELL "A jagged bone lies here." CR>)>)
     (<EQUAL? .OBJ ,OBJ-CHISEL>
       <TELL "A green bronze chisel lies here, narrow as a serpent's fang." CR>)>>
 
@@ -2106,8 +2114,6 @@ open." CR>
   <COND (<EQUAL? ,BACKPACK-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
   <COND (<EQUAL? ,BONE-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
   <COND (<EQUAL? ,CHISEL-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
-  <COND (<EQUAL? ,HELMET-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
-  <COND (<EQUAL? ,CHAINMAIL-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
   <COND (<EQUAL? ,SWORD-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
   <COND (<EQUAL? ,GUARD-SWORD-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
   <COND (<EQUAL? ,GEM-PLACE ,INVENTORY> <SET N <+ .N 1>>)> 
@@ -2375,7 +2381,10 @@ have seen too many black years under stone." CR>)>)
       <TELL "The black gem is clenched in stone claws. You cannot tear it free
 with bare hands." CR>)
 
-    (<CARRY-FULL?>
+    (<AND
+      <CARRY-FULL?>
+      <NOT <EQUAL? .OBJ ,OBJ-HELMET>>
+      <NOT <EQUAL? .OBJ ,OBJ-CHAINMAIL>>>
       <COND
         (<EQUAL? ,BACKPACK-PLACE ,INVENTORY>
           <TELL "Your hands and backpack are full." CR>)
