@@ -1296,7 +1296,7 @@ any king in this land. Black water guards it, and blacker dreams.\"" CR>)
       (<EQUAL? .CH 1>
         <TELL "The guard snorts." CR>
         <TELL "\"I am the last honest blade between this keep and rats like you.
- Remember that while you still have teeth.\"" CR>)
+Remember that while you still have teeth.\"" CR>)
       (<EQUAL? .CH 2>
         <SETG GUARD-ALERT T>
         <TELL "\"Pass?\" The guard lifts his sword. \"You pass when your bones
