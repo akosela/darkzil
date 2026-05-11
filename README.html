@@ -879,6 +879,72 @@ OPCODES:
 *Q
 221 RTS.
 &gt;</code></pre>
+<h2 id="changing-the-default-console-password">Changing the default
+console password</h2>
+<p>By default, the console password is:</p>
+<pre class="text"><code>zork</code></pre>
+<p>The password check is implemented in <code>minilib.zil</code>, in
+these routines:</p>
+<pre class="zil"><code>&lt;ROUTINE SYS-VEC? ...&gt;
+&lt;ROUTINE SYS-VEC-S? ...&gt;</code></pre>
+<p>The password is not stored directly as the plain text word
+<code>zork</code>. Instead, each character is checked as a small numeric
+value.</p>
+<p>The current password:</p>
+<pre class="text"><code>zork</code></pre>
+<p>is encoded as:</p>
+<pre class="text"><code>z = 122 - 100 = 22
+o = 111 - 100 = 11
+r = 114 - 100 = 14
+k = 107 - 100 = 7</code></pre>
+<p>So the current password check in <code>SYS-VEC?</code> looks like
+this:</p>
+<pre class="zil"><code>&lt;COND
+  (&lt;EQUAL? .N 1&gt; &lt;EQUAL? &lt;- .L 100&gt; 22&gt;)
+  (&lt;EQUAL? .N 2&gt; &lt;EQUAL? &lt;- .L 100&gt; 11&gt;)
+  (&lt;EQUAL? .N 3&gt; &lt;EQUAL? &lt;- .L 100&gt; 14&gt;)
+  (&lt;EQUAL? .N 4&gt; &lt;EQUAL? &lt;- .L 100&gt; 7&gt;)
+  (T &lt;RFALSE&gt;)&gt;&gt;</code></pre>
+<p>To change the password, choose a new lowercase password and convert
+every character like this:</p>
+<pre class="text"><code>character ASCII code - 100</code></pre>
+<p>For example, to change the password to:</p>
+<pre class="text"><code>doom</code></pre>
+<p>calculate:</p>
+<pre class="text"><code>d = 100 - 100 = 0
+o = 111 - 100 = 11
+o = 111 - 100 = 11
+m = 109 - 100 = 9</code></pre>
+<p>Then replace the values in <code>SYS-VEC?</code> with:</p>
+<pre class="zil"><code>&lt;COND
+  (&lt;EQUAL? .N 1&gt; &lt;EQUAL? &lt;- .L 100&gt; 0&gt;)
+  (&lt;EQUAL? .N 2&gt; &lt;EQUAL? &lt;- .L 100&gt; 11&gt;)
+  (&lt;EQUAL? .N 3&gt; &lt;EQUAL? &lt;- .L 100&gt; 11&gt;)
+  (&lt;EQUAL? .N 4&gt; &lt;EQUAL? &lt;- .L 100&gt; 9&gt;)
+  (T &lt;RFALSE&gt;)&gt;&gt;</code></pre>
+<p>If the new password has a different length, also update the length
+check in <code>SYS-VEC-S?</code>.</p>
+<p>For the current four-letter password, the check is:</p>
+<pre class="zil"><code>(&lt;NOT &lt;EQUAL? .LEN 4&gt;&gt;
+  &lt;RFALSE&gt;)</code></pre>
+<p>For a five-letter password, change it to:</p>
+<pre class="zil"><code>(&lt;NOT &lt;EQUAL? .LEN 5&gt;&gt;
+  &lt;RFALSE&gt;)</code></pre>
+<p>Then add another character check in the same routine.</p>
+<p>For example, a five-letter password would need five checks:</p>
+<pre class="zil"><code>&lt;AND
+  &lt;SYS-VEC? &lt;GETB ,INBUF .POS&gt; 1&gt;
+  &lt;SYS-VEC? &lt;GETB ,INBUF &lt;+ .POS 1&gt;&gt; 2&gt;
+  &lt;SYS-VEC? &lt;GETB ,INBUF &lt;+ .POS 2&gt;&gt; 3&gt;
+  &lt;SYS-VEC? &lt;GETB ,INBUF &lt;+ .POS 3&gt;&gt; 4&gt;
+  &lt;SYS-VEC? &lt;GETB ,INBUF &lt;+ .POS 4&gt;&gt; 5&gt;&gt;</code></pre>
+<p>Then also add the fifth value in <code>SYS-VEC?</code>:</p>
+<pre class="zil"><code>(&lt;EQUAL? .N 5&gt; &lt;EQUAL? &lt;- .L 100&gt; VALUE&gt;)</code></pre>
+<p>Replace <code>VALUE</code> with the calculated value for the fifth
+character.</p>
+<p>For best compatibility with old Z-machine V3 interpreters, keep the
+password short and use only simple lowercase letters <code>a</code> to
+<code>z</code>.</p>
 <h2 id="project-structure">Project Structure</h2>
 <pre class="text"><code>darkzil/
 ├── darkpit.zil      # Main game source
@@ -896,8 +962,8 @@ executable.</p>
 also includes its own wrapper tool, <strong>zil</strong>, which handles
 most build and workflow tasks.</p>
 <p>Example:</p>
-<div class="sourceCode" id="cb63"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zil</span> darkpit.zil</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zil</span> darkpit.zil</span></code></pre></div>
 <p>This should produce a Z-machine story file, usually with a
 <code>.z3</code> extension plus Atari double density (dd) ATR disk
 image.</p>

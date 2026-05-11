@@ -768,6 +768,121 @@ OPCODES:
 >
 ```
 
+## Changing the default console password
+
+By default, the console password is:
+
+```text
+zork
+```
+
+The password check is implemented in `minilib.zil`, in these routines:
+
+```zil
+<ROUTINE SYS-VEC? ...>
+<ROUTINE SYS-VEC-S? ...>
+```
+
+The password is not stored directly as the plain text word `zork`. Instead, each character is checked as a small numeric value.
+
+The current password:
+
+```text
+zork
+```
+is encoded as:
+
+```text
+z = 122 - 100 = 22
+o = 111 - 100 = 11
+r = 114 - 100 = 14
+k = 107 - 100 = 7
+```
+
+So the current password check in `SYS-VEC?` looks like this:
+
+```zil
+<COND
+  (<EQUAL? .N 1> <EQUAL? <- .L 100> 22>)
+  (<EQUAL? .N 2> <EQUAL? <- .L 100> 11>)
+  (<EQUAL? .N 3> <EQUAL? <- .L 100> 14>)
+  (<EQUAL? .N 4> <EQUAL? <- .L 100> 7>)
+  (T <RFALSE>)>>
+```
+
+To change the password, choose a new lowercase password and convert every
+character like this:
+
+```text
+character ASCII code - 100
+```
+
+For example, to change the password to:
+
+```text
+doom
+```
+
+calculate:
+
+```text
+d = 100 - 100 = 0
+o = 111 - 100 = 11
+o = 111 - 100 = 11
+m = 109 - 100 = 9
+```
+
+Then replace the values in `SYS-VEC?` with:
+
+```zil
+<COND
+  (<EQUAL? .N 1> <EQUAL? <- .L 100> 0>)
+  (<EQUAL? .N 2> <EQUAL? <- .L 100> 11>)
+  (<EQUAL? .N 3> <EQUAL? <- .L 100> 11>)
+  (<EQUAL? .N 4> <EQUAL? <- .L 100> 9>)
+  (T <RFALSE>)>>
+```
+
+If the new password has a different length, also update the length check in `SYS-VEC-S?`.
+
+For the current four-letter password, the check is:
+
+```zil
+(<NOT <EQUAL? .LEN 4>>
+  <RFALSE>)
+```
+
+For a five-letter password, change it to:
+
+```zil
+(<NOT <EQUAL? .LEN 5>>
+  <RFALSE>)
+```
+
+Then add another character check in the same routine.
+
+For example, a five-letter password would need five checks:
+
+```zil
+<AND
+  <SYS-VEC? <GETB ,INBUF .POS> 1>
+  <SYS-VEC? <GETB ,INBUF <+ .POS 1>> 2>
+  <SYS-VEC? <GETB ,INBUF <+ .POS 2>> 3>
+  <SYS-VEC? <GETB ,INBUF <+ .POS 3>> 4>
+  <SYS-VEC? <GETB ,INBUF <+ .POS 4>> 5>>
+```
+
+Then also add the fifth value in `SYS-VEC?`:
+
+```zil
+(<EQUAL? .N 5> <EQUAL? <- .L 100> VALUE>)
+```
+
+Replace `VALUE` with the calculated value for the fifth character.
+
+For best compatibility with old Z-machine V3 interpreters, keep the password
+short and use only simple lowercase letters `a` to `z`.
+
 ## Project Structure
 
 ```text
