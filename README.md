@@ -56,6 +56,52 @@ not only in modern interpreters such as Frotz, but also on classic Atari
   * combat
   * automatic or manual dice rolls
 
+## Project Structure
+
+```text
+darkzil/
+├── darkpit.zil      # Main game source
+├── minilib.zil      # Minimal support library / parser / common routines
+├── a8.bin.green     # Atari 8-bit Z-machine interpreter, green-screen variant
+├── a8.bin.amber     # Atari 8-bit Z-machine interpreter, amber-screen variant
+├── zil              # Build/run helper script
+└── README.md
+```
+
+## Installing
+
+Copy **zil** and **a8.bin** files to your **/usr/local/bin**.
+Make **zil** executable.
+
+## Building
+
+This project is intended to be built with **ZILF**. It also includes its
+own wrapper tool, **zil**, which handles most build and workflow tasks.
+
+Example:
+
+```sh
+zil darkpit.zil
+```
+
+This should produce a Z-machine story file, usually with a `.z3` extension
+plus Atari double density (dd) ATR disk image.
+
+You can download **ZILF** from [https://zilf.io](https://zilf.io)
+
+## Target Platform
+
+The main target is:
+
+```text
+Z-machine Version 3
+Atari 8-bit
+```
+
+The code avoids relying on modern interpreter conveniences where possible.
+
+Because Atari 8-bit interpreters are much stricter and more memory-constrained
+than modern ones, the project tries to follow old Infocom-style limitations.
 
 ## DarkRPG
 
@@ -768,7 +814,7 @@ OPCODES:
 >
 ```
 
-## Changing the default console password
+## Changing the Default Console Password
 
 By default, the console password is:
 
@@ -882,53 +928,6 @@ Replace `VALUE` with the calculated value for the fifth character.
 
 For best compatibility with old Z-machine V3 interpreters, keep the password
 short and use only simple lowercase letters `a` to `z`.
-
-## Project Structure
-
-```text
-darkzil/
-├── darkpit.zil      # Main game source
-├── minilib.zil      # Minimal support library / parser / common routines
-├── a8.bin.green     # Atari 8-bit Z-machine interpreter, green-screen variant
-├── a8.bin.amber     # Atari 8-bit Z-machine interpreter, amber-screen variant
-├── zil              # Build/run helper script
-└── README.md
-```
-
-## Installing
-
-Copy **zil** and **a8.bin** files to your **/usr/local/bin**.
-Make **zil** executable.
-
-## Building
-
-This project is intended to be built with **ZILF**. It also includes its
-own wrapper tool, **zil**, which handles most build and workflow tasks.
-
-Example:
-
-```sh
-zil darkpit.zil
-```
-
-This should produce a Z-machine story file, usually with a `.z3` extension
-plus Atari double density (dd) ATR disk image.
-
-You can download **ZILF** from [https://zilf.io](https://zilf.io)
-
-## Target Platform
-
-The main target is:
-
-```text
-Z-machine Version 3
-Atari 8-bit
-```
-
-The code avoids relying on modern interpreter conveniences where possible.
-
-Because Atari 8-bit interpreters are much stricter and more memory-constrained
-than modern ones, the project tries to follow old Infocom-style limitations.
 
 ## Important Z3 / Atari Notes
 

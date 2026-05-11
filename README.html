@@ -294,6 +294,38 @@ classic Atari 8-bit computers.</p>
 <li>automatic or manual dice rolls</li>
 </ul></li>
 </ul>
+<h2 id="project-structure">Project Structure</h2>
+<pre class="text"><code>darkzil/
+├── darkpit.zil      # Main game source
+├── minilib.zil      # Minimal support library / parser / common routines
+├── a8.bin.green     # Atari 8-bit Z-machine interpreter, green-screen variant
+├── a8.bin.amber     # Atari 8-bit Z-machine interpreter, amber-screen variant
+├── zil              # Build/run helper script
+└── README.md</code></pre>
+<h2 id="installing">Installing</h2>
+<p>Copy <strong>zil</strong> and <strong>a8.bin</strong> files to your
+<strong>/usr/local/bin</strong>. Make <strong>zil</strong>
+executable.</p>
+<h2 id="building">Building</h2>
+<p>This project is intended to be built with <strong>ZILF</strong>. It
+also includes its own wrapper tool, <strong>zil</strong>, which handles
+most build and workflow tasks.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zil</span> darkpit.zil</span></code></pre></div>
+<p>This should produce a Z-machine story file, usually with a
+<code>.z3</code> extension plus Atari double density (dd) ATR disk
+image.</p>
+<p>You can download <strong>ZILF</strong> from <a
+href="https://zilf.io">https://zilf.io</a></p>
+<h2 id="target-platform">Target Platform</h2>
+<p>The main target is:</p>
+<pre class="text"><code>Z-machine Version 3
+Atari 8-bit</code></pre>
+<p>The code avoids relying on modern interpreter conveniences where
+possible.</p>
+<p>Because Atari 8-bit interpreters are much stricter and more
+memory-constrained than modern ones, the project tries to follow old
+Infocom-style limitations.</p>
 <h2 id="darkrpg">DarkRPG</h2>
 <p><strong>DarkRPG</strong> is a general-purpose tabletop role-playing
 game system created by Andy Kosela. It is designed as a simple, flexible
@@ -879,8 +911,8 @@ OPCODES:
 *Q
 221 RTS.
 &gt;</code></pre>
-<h2 id="changing-the-default-console-password">Changing the default
-console password</h2>
+<h2 id="changing-the-default-console-password">Changing the Default
+Console Password</h2>
 <p>By default, the console password is:</p>
 <pre class="text"><code>zork</code></pre>
 <p>The password check is implemented in <code>minilib.zil</code>, in
@@ -945,39 +977,6 @@ character.</p>
 <p>For best compatibility with old Z-machine V3 interpreters, keep the
 password short and use only simple lowercase letters <code>a</code> to
 <code>z</code>.</p>
-<h2 id="project-structure">Project Structure</h2>
-<pre class="text"><code>darkzil/
-├── darkpit.zil      # Main game source
-├── minilib.zil      # Minimal support library / parser / common routines
-├── a8.bin.green     # Atari 8-bit Z-machine interpreter, green-screen variant
-├── a8.bin.amber     # Atari 8-bit Z-machine interpreter, amber-screen variant
-├── zil              # Build/run helper script
-└── README.md</code></pre>
-<h2 id="installing">Installing</h2>
-<p>Copy <strong>zil</strong> and <strong>a8.bin</strong> files to your
-<strong>/usr/local/bin</strong>. Make <strong>zil</strong>
-executable.</p>
-<h2 id="building">Building</h2>
-<p>This project is intended to be built with <strong>ZILF</strong>. It
-also includes its own wrapper tool, <strong>zil</strong>, which handles
-most build and workflow tasks.</p>
-<p>Example:</p>
-<div class="sourceCode" id="cb76"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zil</span> darkpit.zil</span></code></pre></div>
-<p>This should produce a Z-machine story file, usually with a
-<code>.z3</code> extension plus Atari double density (dd) ATR disk
-image.</p>
-<p>You can download <strong>ZILF</strong> from <a
-href="https://zilf.io">https://zilf.io</a></p>
-<h2 id="target-platform">Target Platform</h2>
-<p>The main target is:</p>
-<pre class="text"><code>Z-machine Version 3
-Atari 8-bit</code></pre>
-<p>The code avoids relying on modern interpreter conveniences where
-possible.</p>
-<p>Because Atari 8-bit interpreters are much stricter and more
-memory-constrained than modern ones, the project tries to follow old
-Infocom-style limitations.</p>
 <h2 id="important-z3-atari-notes">Important Z3 / Atari Notes</h2>
 <p>When writing new content, keep these constraints in mind:</p>
 <h3 id="keep-vocabulary-short">Keep vocabulary short</h3>
