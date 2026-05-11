@@ -947,7 +947,7 @@ A game built with darkzil should ideally work in:
 
 * Frotz
 * Bocfel
-* Parchment ([play it online](https://iplayif.com/))
+* Parchment ([play it online](https://iplayif.com/?story=https%3A%2F%2Fgithub.com%2Fakosela%2Fdarkzil%2Fraw%2Frefs%2Fheads%2Fmaster%2Fdarkpit.z3))
 * other modern Z-machine interpreters
 * Atari 8-bit computers
 
